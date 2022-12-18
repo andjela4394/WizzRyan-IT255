@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Flight } from './flight/flight.model';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'IT255-WizzRyan';
+  flights: Flight[]; //osobina komponente
+
+  constructor() {
+    this.flights = [
+      new Flight('Beograd', 'Pariz', '10AM'),
+      new Flight('Budimpešta', 'Porto', '6PM'),
+      new Flight('Beograd', 'Madrid', '4PM'),
+    ];
+  }
+
+  addFlight(polazak: HTMLInputElement, dolazak: HTMLInputElement, vremePoletanja: HTMLInputElement): boolean {
+    console.log(`Adding article title: ${polazak.value} and link: ${dolazak.value}`);
+    this.flights.push(new Flight(polazak.value, dolazak.value, vremePoletanja.value));
+    polazak.value = '';
+    dolazak.value = '';
+    vremePoletanja.value = '';
+    return false;
+  }
 }
