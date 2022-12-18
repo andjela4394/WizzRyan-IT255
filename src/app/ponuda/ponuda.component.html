@@ -1,0 +1,12 @@
+<p>
+    Naša ponuda letova za Vas:
+</p>
+    <ul *ngFor="let flight of flights">
+        <li> Let:
+            <ul>
+                <li> {{flight.polazak}} </li>
+                <li> {{flight.dolazak}} </li>
+                <li> {{flight.vremePoletanja}} </li>
+            </ul>
+        </li>
+    </ul>

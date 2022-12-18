@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Flight } from './flight/flight.model';
+import { PonudaComponent } from './ponuda/ponuda.component';
 
 @Component({
   selector: 'app-root',
