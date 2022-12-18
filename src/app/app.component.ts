@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Flight } from './flight/flight.model';
 import { PonudaComponent } from './ponuda/ponuda.component';
 
@@ -8,6 +9,21 @@ import { PonudaComponent } from './ponuda/ponuda.component';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  values?: string;
+
+  angForm = new FormGroup({
+    polazak: new FormControl("", [Validators.required, Validators.minLength(2)]),
+    dolazak: new FormControl("", [Validators.required, Validators.minLength(2)]),
+    vremePoletanja: new FormControl("", [Validators.required, Validators.minLength(4)]),
+  });
+
+  validacija() {
+    console.log(this.angForm.value)
+  }
+
+  getControl(name: any): AbstractControl | null {
+    return this.angForm.get(name);
+  }
   flights: Flight[]; //osobina komponente
 
   constructor() {

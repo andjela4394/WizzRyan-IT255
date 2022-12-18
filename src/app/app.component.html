@@ -1,41 +1,80 @@
 <app-navbar></app-navbar>
-<form>
+<form [formGroup]="angForm" (ngSubmit)=" angForm.status !== 'INVALID' &&validacija()">
   <h2>Dodaj let</h2>
 
   <div>
     <label for="polazak">Polazak:</label>
-    <input name="polazak" id="polazak" #newpolazak>
+    <input name="polazak" id="polazak" #newpolazak class="form-contol" formControlName="polazak"
+      [ngClass]="{error: getControl('polazak')?.errors && getControl('polazak')?.touched}">
+    <div *ngIf="getControl('polazak')?.errors && getControl('polazak')?.touched">
+      <p *ngIf="getControl('polazak')?.errors?.['required']">Ovo polje je obavezno</p>
+      <p *ngIf="getControl('polazak')?.errors?.['minLength']">Unos ne sme biti manji od 2
+        karaktera</p>
+    </div>
   </div>
   <div>
-    <label for="dolazal">Dolazak:</label>
-    <input name="dolazal" id="dolazak" #newdolazak>
+    <label for="dolazak">Dolazak:</label>
+    <input name="dolazal" id="dolazak" #newdolazak class="form-contol" formControlName="dolazak"
+      [ngClass]="{error: getControl('dolazak')?.errors && getControl('dolazak')?.touched}">
+    <div *ngIf="getControl('dolazak')?.errors && getControl('dolazak')?.touched">
+      <p *ngIf="getControl('dolazak')?.errors?.['required']">Ovo polje je obavezno</p>
+      <p *ngIf="getControl('dolazak')?.errors?.['minLength']">Unos ne sme biti manji od 2
+        karaktera</p>
+    </div>
   </div>
   <div>
     <label for="vremePoletanja">Vreme poletanja:</label>
-    <input name="vremePoletanja" id="vremePoletanja" #newvremePoletanja>
+    <input name="vremePoletanja" id="vremePoletanja" #newvremepoletanja class="form-contol"
+      formControlName="vremePoletanja"
+      [ngClass]="{error: getControl('vremePoletanja')?.errors && getControl('vremePoletanja')?.touched}">
+    <div *ngIf="getControl('vremePoletanja')?.errors && getControl('vremePoletanja')?.touched">
+      <p *ngIf="getControl('vremePoletanja')?.errors?.['required']">Ovo polje je obavezno</p>
+      <p *ngIf="getControl('vremePoletanja')?.errors?.['minLength']">Unos ne sme biti manji od 4
+        karaktera</p>
+    </div>
   </div>
-  <button (click)="addFlight(newpolazak, newdolazak, newvremePoletanja)">
-    Submit 
+
+  <div>
+
+    <label for="Direktan let">Direktan let:</label>
+    <input type="checkbox" id="direktanLet" [checked]="values === 'direktanLet'" (click)="values = 'direktanLet'" /><br>
+    <label for="Biznis klasa">Biznis klasa:</label>
+    <input type="checkbox" id="biznisKlasa" value="biznisKlasa" [checked]="values === 'biznisKlasa'" (click)="values = 'biznisKlasa'" /><br>
+    <label for="Gratis hrana">Gratis hrana:</label>
+    <input type="checkbox" id="gratisHrana" value="gratisHrana" [checked]="values === 'gratisHrana'" (click)="values = 'gratisHrana'" />
+  </div>
+  <div *ngIf="values === 'direktanLet'">
+    <b>Vaš račun se uvaćao za 5000 dinara.</b>
+  </div>
+  <div *ngIf="values === 'biznisKlasa'">
+    <b>Vaš račun se uvećao za 15000 dinara.</b>
+  </div>
+  <div *ngIf="values === 'gratisHrana'">
+    <b>Vaš račun se uvećao za 2000 dinara.</b>
+  </div>
+
+  <button (click)="addFlight(newpolazak, newdolazak, newvremepoletanja)" [disabled]="angForm.status==='INVALID'"
+    class="btn btn-success">
+    Submit
   </button>
 </form>
-  
+
 
 
 <div>
   <table id="flights">
     <thead>
-        <th>Polazak</th>
-        <th>Dolazak</th>
-        <th>Vreme poletanja</th>
+      <th>Polazak</th>
+      <th>Dolazak</th>
+      <th>Vreme poletanja</th>
     </thead>
     <tbody>
       <tr *ngFor="let flight of flights">
-          <td> {{flight.polazak}} </td>
-          <td> {{flight.dolazak}} </td>
-          <td> {{flight.vremePoletanja}} </td>
+        <td> {{flight.polazak}} </td>
+        <td> {{flight.dolazak}} </td>
+        <td> {{flight.vremePoletanja}} </td>
       </tr>
     </tbody>
-</table>
-  
-</div>
+  </table>
 
+</div>
