@@ -10,6 +10,8 @@ import { PreporukaComponent } from './preporuka/preporuka.component';
 import { OnamaComponent } from './onama/onama.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DiComponent } from './di/di.component';
+import { FlightServiceService } from './flight-service.service';
 
 const routes: Routes = [
 {path: 'ponuda', component: PonudaComponent },
@@ -25,6 +27,7 @@ const routes: Routes = [
     PonudaComponent,
     PreporukaComponent,
     OnamaComponent,
+    DiComponent,
   ],
   imports: [
     [RouterModule.forRoot(routes)],
@@ -33,7 +36,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [],
+  providers: [FlightServiceService],
   bootstrap: [AppComponent],
   exports: [RouterModule]
 })
