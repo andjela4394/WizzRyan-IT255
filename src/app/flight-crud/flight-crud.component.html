@@ -1,0 +1,67 @@
+<nav class="navbar navbar-light" style="background-color: #004345;">
+    <div class="container-fluid">
+        <h3 style="color: white;">Letovi CRUD</h3>
+        <div class="d-flex">
+            <button (click)="clickAddFlight()" class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Dodaj let</button>
+        </div>
+    </div>
+</nav>
+
+<table class="table mt-3">
+    <thead>
+        <tr>
+            <th scope="col">ID leta</th>
+            <th scope="col">Polazak</th>
+            <th scope="col">Dolazak</th>
+            <th scope="col">Vreme poletanja</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of flightData">
+            <td>{{row.id}}</td>
+            <td>{{row.polazak}}</td>
+            <td>{{row.dolazak}}</td>
+            <td>{{row.vremePoletanja}}</td>
+            <td>
+                <button (click)="onEdit(row)" class="btn btn-info" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
+                <button (click)="deleteFlight(row)" class="btn btn-danger mx-3">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Informacije o letu</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="formValue">
+                <div class="mb-3">
+                  <label for="polazak" class="form-label">Polazak</label>
+                  <input type="text" formControlName="polazak" class="form-control" id="polazak">
+                </div>
+                <div class="mb-3">
+                  <label for="dolazak" class="form-label">Dolazak</label>
+                  <input type="text" formControlName="dolazak" class="form-control" id="dolazak">
+                </div>
+                <div class="mb-3">
+                    <label for="vremePoletanja" class="form-label">Vreme poletanja</label>
+                    <input type="text" formControlName="vremePoletanja" class="form-control" id="vremePoletanja">
+                  </div>
+            
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Zatvori</button>
+          <button type="button" *ngIf="showAdd" (click)="postFlightDetails()" class="btn btn-primary">Dodaj</button>
+          <button type="button" *ngIf="showUpdate" (click)="updateFlightDetails()" class="btn btn-primary">Ažuriraj</button>
+        </div>
+      </div>
+    </div>
+  </div>

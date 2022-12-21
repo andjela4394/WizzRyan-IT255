@@ -12,6 +12,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DiComponent } from './di/di.component';
 import { FlightServiceService } from './flight-service.service';
+import { FlightCrudComponent } from './flight-crud/flight-crud.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
 {path: 'ponuda', component: PonudaComponent },
@@ -28,13 +30,15 @@ const routes: Routes = [
     PreporukaComponent,
     OnamaComponent,
     DiComponent,
+    FlightCrudComponent,
   ],
   imports: [
     [RouterModule.forRoot(routes)],
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [FlightServiceService],
   bootstrap: [AppComponent],
