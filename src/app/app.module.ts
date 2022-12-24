@@ -15,6 +15,7 @@ import { FlightServiceService } from './flight-service.service';
 import { FlightCrudComponent } from './flight-crud/flight-crud.component';
 import { HttpClientModule } from '@angular/common/http';
 
+//rute već odrađene u prethodnim zadacima
 const routes: Routes = [
 {path: 'ponuda', component: PonudaComponent },
 {path: 'preporuka', component: PreporukaComponent },
