@@ -17,6 +17,12 @@
       "polazak": "Beograd",
       "dolazak": "Niš",
       "vremePoletanja": "8:40PM"
+    },
+    {
+      "id": 5,
+      "polazak": "Beograd",
+      "dolazak": "Porto",
+      "vremePoletanja": "11:00pm"
     }
   ],
   "comments": [],
