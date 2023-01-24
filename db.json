@@ -23,6 +23,12 @@
       "polazak": "Beograd",
       "dolazak": "Porto",
       "vremePoletanja": "11:00pm"
+    },
+    {
+      "id": 6,
+      "polazak": "Budimpešta",
+      "dolazak": "Pariz",
+      "vremePoletanja": "10AM"
     }
   ],
   "comments": [],

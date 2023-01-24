@@ -14,12 +14,13 @@ import { DiComponent } from './di/di.component';
 import { FlightServiceService } from './flight-service.service';
 import { FlightCrudComponent } from './flight-crud/flight-crud.component';
 import { HttpClientModule } from '@angular/common/http';
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 //rute već odrađene u prethodnim zadacima
 const routes: Routes = [
 {path: 'ponuda', component: PonudaComponent },
 {path: 'preporuka', component: PreporukaComponent },
-{path: 'onama', component: OnamaComponent}
+{path: 'onama', component: OnamaComponent} 
 ];
 
 @NgModule({
@@ -32,6 +33,7 @@ const routes: Routes = [
     OnamaComponent,
     DiComponent,
     FlightCrudComponent,
+    RxjsComponent,
   ],
   imports: [
     [RouterModule.forRoot(routes)],
