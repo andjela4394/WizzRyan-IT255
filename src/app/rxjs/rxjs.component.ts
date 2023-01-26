@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Flight } from '../models/flight';
+import { Flight2 } from '../models/flight';
 
 import { FlightService } from '../services/flight.service';
 
@@ -9,7 +9,7 @@ import { FlightService } from '../services/flight.service';
   styleUrls: ['./rxjs.component.scss']
 })
 export class RxjsComponent implements OnInit {
-  flights!: Flight[];
+  flights!: Flight2[];
   constructor(private flightService: FlightService) { }
   ngOnInit() {
     this.getFlights();

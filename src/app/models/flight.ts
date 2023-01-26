@@ -1,4 +1,4 @@
-export class Flight {
+export class Flight2 {
     id: number;
     polazak: string;
     dolazak: string;

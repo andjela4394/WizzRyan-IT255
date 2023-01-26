@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Flight } from '../flight/flight.model';
+import { FlightModel } from '../flight/flight.model';
 
 @Component({
   selector: 'app-preporuka',
@@ -7,6 +7,6 @@ import { Flight } from '../flight/flight.model';
   styleUrls: ['./preporuka.component.scss']
 })
 export class PreporukaComponent {
-  flight = new Flight("Beograd", "Pariz", "10AM");
+  flight = new FlightModel("Beograd", "Pariz", "10AM");
 
 }

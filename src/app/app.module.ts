@@ -15,6 +15,9 @@ import { FlightServiceService } from './flight-service.service';
 import { FlightCrudComponent } from './flight-crud/flight-crud.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { flightReducer } from './store/reducers/flight.reducer';
 
 //rute već odrađene u prethodnim zadacima
 const routes: Routes = [
@@ -33,7 +36,7 @@ const routes: Routes = [
     OnamaComponent,
     DiComponent,
     FlightCrudComponent,
-    RxjsComponent,
+    RxjsComponent
   ],
   imports: [
     [RouterModule.forRoot(routes)],
@@ -41,9 +44,11 @@ const routes: Routes = [
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    EffectsModule.forRoot([]),
+    StoreModule.forRoot([])
   ],
-  providers: [FlightServiceService],
+  providers: [FlightServiceService, AppComponent],
   bootstrap: [AppComponent],
   exports: [RouterModule]
 })

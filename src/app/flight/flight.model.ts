@@ -1,4 +1,4 @@
-export class Flight {
+export class FlightModel {
     polazak: string;
     dolazak: string;
     vremePoletanja: string;

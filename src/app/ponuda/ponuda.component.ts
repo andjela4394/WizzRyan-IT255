@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppComponent } from '../app.component';
-import { Flight } from '../flight/flight.model';
+import { FlightModel } from '../flight/flight.model';
 
 @Component({
   selector: 'app-ponuda',
@@ -9,7 +9,8 @@ import { Flight } from '../flight/flight.model';
 })
 export class PonudaComponent{
   
-  appComponent:AppComponent = new AppComponent;
+  constructor(private appComponent: AppComponent){}
+
   flights = this.appComponent.flights;
 
 }
